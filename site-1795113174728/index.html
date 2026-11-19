@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX DETAIL — Студия профессионального автодетейлинга в Украине</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0B0D10;
+            --card-bg: #14171D;
+            --card-border: #1F242D;
+            --accent: #F59E0B;
+            --accent-hover: #D97706;
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(11, 13, 16, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .header-phone {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+
+        .header-phone:hover {
+            color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--card-border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            background: rgba(245, 158, 11, 0.05);
+            color: var(--accent);
+            box-shadow: none;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            padding-top: 95px;
+            padding-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 5%;
+            padding-right: 5%;
+            background: radial-gradient(circle at 50% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* CALCULATOR SECTION */
+        .calculator {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .calc-group {
+            margin-bottom: 30px;
+        }
+
+        .calc-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .car-classes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .class-btn {
+            background: var(--bg-main);
+            border: 2px solid var(--card-border);
+            padding: 16px;
+            border-radius: 10px;
+            color: var(--text-main);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .class-btn.active {
+            border-color: var(--accent);
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent);
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .service-checkbox {
+            background: var(--bg-main);
+            border: 2px solid var(--card-border);
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .service-checkbox:hover {
+            border-color: rgba(245, 158, 11, 0.5);
+        }
+
+        .service-checkbox input {
+            accent-color: var(--accent);
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .service-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .service-name {
+            font-weight: 600;
+        }
+
+        .service-price {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .calc-result-box {
+            background: var(--bg-main);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .total-price {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .calc-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .calc-input {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 14px 18px;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .calc-input:focus {
+            border-color: var(--accent);
+        }
+
+        /* SERVICES GRID */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(245, 158, 11, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            gap: 12px;
+        }
+
+        .service-card-price {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        /* ADVANTAGES */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .advantage-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 35px 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .advantage-card:hover {
+            border-color: var(--accent);
+        }
+
+        .advantage-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .advantage-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* CONTACTS SECTION */
+        .contacts-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .contact-item span {
+            color: var(--accent);
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding: 30px 5%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--text-main);
+        }
+
+        .modal h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .modal p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        .modal form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 4%;
+                height: 70px;
+            }
+            .hero {
+                padding-top: 85px;
+            }
+            .calculator {
+                padding: 20px;
+            }
+            .contacts-section {
+                padding: 30px 20px;
+            }
+            .header-phone {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="#" class="logo">APEX <span>DETAIL</span></a>
+        <div class="header-right">
+            <a href="tel:+380678421950" class="header-phone">+380 (67) 842-19-50</a>
+            <button class="btn" onclick="openModal('Запись на консультацию')">Записаться</button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Защита кузова и детейлинг <span>премиум-класса</span></h1>
+            <p>Бронепленка, глубокая полировка и керамика 9H с гарантией до 5 лет</p>
+            <div class="hero-buttons">
+                <a href="#calculator" class="btn">Рассчитать стоимость</a>
+                <a href="#services" class="btn btn-outline">Прайс услуг</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULATOR SECTION -->
+    <section class="container" id="calculator">
+        <h2 class="section-title">Калькулятор стоимости услуг</h2>
+        <p class="section-subtitle">Выберите параметры вашего автомобиля и необходимые услуги для расчета</p>
+        
+        <div class="calculator">
+            <div class="calc-group">
+                <label class="calc-label">1. Выберите класс автомобиля:</label>
+                <div class="car-classes">
+                    <button type="button" class="class-btn active" data-coef="1.0" onclick="setCarClass(this, 1.0)">Седан <span style="font-size:0.8rem; display:block; color:var(--text-muted)">Коэффициент 1.0</span></button>
+                    <button type="button" class="class-btn" data-coef="1.2" onclick="setCarClass(this, 1.2)">Кроссовер <span style="font-size:0.8rem; display:block; color:var(--text-muted)">Коэффициент 1.2</span></button>
+                    <button type="button" class="class-btn" data-coef="1.4" onclick="setCarClass(this, 1.4)">Внедорожник / Минивэн <span style="font-size:0.8rem; display:block; color:var(--text-muted)">Коэффициент 1.4</span></button>
+                </div>
+            </div>
+
+            <div class="calc-group">
+                <label class="calc-label">2. Выберите необходимые услуги:</label>
+                <div class="services-list">
+                    <label class="service-checkbox">
+                        <input type="checkbox" data-price="6500" data-name="Глубокая восстановительная полировка" onchange="calculateTotal()">
+                        <div class="service-info">
+                            <span class="service-name">Глубокая восстановительная полировка</span>
+                            <span class="service-price">от 6 500 грн</span>
+                        </div>
+                    </label>
+                    <label class="service-checkbox">
+                        <input type="checkbox" data-price="7000" data-name="Нанесение керамики 9H (2 слоя)" onchange="calculateTotal()">
+                        <div class="service-info">
+                            <span class="service-name">Нанесение керамики 9H (2 слоя)</span>
+                            <span class="service-price">от 7 000 грн</span>
+                        </div>
+                    </label>
+                    <label class="service-checkbox">
+                        <input type="checkbox" data-price="11500" data-name="Оклейка зон риска антигравийной пленкой" onchange="calculateTotal()">
+                        <div class="service-info">
+                            <span class="service-name">Оклейка зон риска антигравийной пленкой</span>
+                            <span class="service-price">от 11 500 грн</span>
+                        </div>
+                    </label>
+                    <label class="service-checkbox">
+                        <input type="checkbox" data-price="4200" data-name="Детейлинг-химчистка салона с разбором" onchange="calculateTotal()">
+                        <div class="service-info">
+                            <span class="service-name">Детейлинг-химчистка салона с разбором</span>
+                            <span class="service-price">от 4 200 грн</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="calc-result-box">
+                <div>
+                    <span style="color: var(--text-muted); font-size: 0.95rem; display: block; margin-bottom: 5px;">Итоговая стоимость:</span>
+                    <div class="total-price" id="totalPrice">0 грн</div>
+                </div>
+
+                <form class="calc-form" onsubmit="submitCalculator(event)">
+                    <input type="text" id="calcName" class="calc-input" placeholder="Ваше имя" required>
+                    <input type="tel" id="calcPhone" class="calc-input" placeholder="Ваш телефон" required>
+                    <button type="submit" class="btn" style="grid-column: 1 / -1;">Зафиксировать цену в Telegram</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES GRID SECTION -->
+    <section class="container" id="services">
+        <h2 class="section-title">Популярные услуги</h2>
+        <p class="section-subtitle">Профессиональный уход и надежная защита вашего автомобиля</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div>
+                    <h3>Восстановительная полировка</h3>
+                    <p>Удаление царапин, голограмм и возвращение глубокого зеркального блеска лакокрасочному покрытию.</p>
+                </div>
+                <div class="service-card-footer">
+                    <span class="service-card-price">от 6 500 грн</span>
+                    <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openModal('Заказ услуги: Восстановительная полировка')">Выбрать</button>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <h3>Керамическое покрытие 9H</h3>
+                    <p>Мощный гидрофобный эффект, защита от выгорания, ультрафиолета и химических реагентов.</p>
+                </div>
+                <div class="service-card-footer">
+                    <span class="service-card-price">от 7 000 грн</span>
+                    <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openModal('Заказ услуги: Керамическое покрытие 9H')">Выбрать</button>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <h3>Антигравийная оклейка</h3>
+                    <p>Надежная защита передней части авто премиальными полиуретановыми пленками от сколов и царапин.</p>
+                </div>
+                <div class="service-card-footer">
+                    <span class="service-card-price">от 11 500 грн</span>
+                    <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openModal('Заказ услуги: Антигравийная оклейка')">Выбрать</button>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <h3>Детейлинг-химчистка</h3>
+                    <p>Глубокая очистка каждого элемента интерьера с полным разбором салона и безопасной химией.</p>
+                </div>
+                <div class="service-card-footer">
+                    <span class="service-card-price">от 4 200 грн</span>
+                    <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openModal('Заказ услуги: Детейлинг-химчистка')">Выбрать</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADVANTAGES SECTION -->
+    <section class="container">
+        <h2 class="section-title">Почему выбирают APEX DETAIL</h2>
+        <p class="section-subtitle">Бескомпромиссное качество и забота о вашем автомобиле</p>
+
+        <div class="advantages-grid">
+            <div class="advantage-card">
+                <div class="advantage-icon">🛡️</div>
+                <h3>Премиум пленки Llumar/SunTek</h3>
+                <p>Используем только сертифицированные оригинальные материалы мировых брендов с гарантией защиты.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">🔒</div>
+                <h3>Охраняемый бокс 24/7</h3>
+                <p>Ваш автомобиль находится в полной безопасности под круглосуточной охраной и видеонаблюдением.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">📸</div>
+                <h3>Фотоотчет каждого этапа</h3>
+                <p>Мы отправляем детальный фото- и видеоотчет о проделанной работе в удобный для вас мессенджер.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTS SECTION -->
+    <section class="container">
+        <div class="contacts-section">
+            <div class="contact-info">
+                <h2>Контакты студии</h2>
+                <p>Приезжайте на бесплатный осмотр и консультацию специалиста. Мы ответим на все вопросы по уходу за вашим авто.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span>📍</span> Украина, студия детейлинга APEX DETAIL
+                    </div>
+                    <div class="contact-item">
+                        <span>📞</span> <a href="tel:+380678421950" style="color: inherit; text-decoration: none;">+380 (67) 842-19-50</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>⏰</span> Пн–Вс 09:00–20:00 (без выходных)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button class="btn" style="width: 100%; padding: 18px;" onclick="openModal('Заказать звонок')">Связаться с нами</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 APEX DETAIL. Все права защищены. Профессиональный детейлинг в Украине.</p>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 id="modalTitle">Записаться на услугу</h3>
+            <p id="modalSubtitle">Оставьте ваши контакты, и мы свяжемся с вами в течение 10 минут.</p>
+            <form onsubmit="submitModal(event)">
+                <input type="text" id="modalName" class="calc-input" placeholder="Ваше имя" required>
+                <input type="tel" id="modalPhone" class="calc-input" placeholder="Ваш телефон" required>
+                <button type="submit" class="btn" style="width: 100%;">Отправить заявку в Telegram</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        let currentCoef = 1.0;
+
+        function setCarClass(button, coef) {
+            document.querySelectorAll('.class-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            currentCoef = coef;
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            let checkboxes = document.querySelectorAll('.services-list input[type="checkbox"]:checked');
+            let baseTotal = 0;
+            checkboxes.forEach(cb => {
+                baseTotal += parseFloat(cb.getAttribute('data-price'));
+            });
+            let finalTotal = Math.round(baseTotal * currentCoef);
+            document.getElementById('totalPrice').innerText = finalTotal.toLocaleString('ru-RU') + ' грн';
+        }
+
+        function submitCalculator(event) {
+            event.preventDefault();
+            let name = document.getElementById('calcName').value;
+            let phone = document.getElementById('calcPhone').value;
+            
+            let activeClassBtn = document.querySelector('.class-btn.active');
+            let className = activeClassBtn ? activeClassBtn.childNodes[0].textContent.trim() : 'Не указан';
+            
+            let checkboxes = document.querySelectorAll('.services-list input[type="checkbox"]:checked');
+            let servicesListText = [];
+            checkboxes.forEach(cb => {
+                servicesListText.push(cb.getAttribute('data-name'));
+            });
+
+            if (servicesListText.length === 0) {
+                alert('Пожалуйста, выберите хотя бы одну услугу.');
+                return;
+            }
+
+            let totalPriceText = document.getElementById('totalPrice').innerText;
+
+            let orderText = `Заявка с сайта APEX DETAIL (Калькулятор):\n\n` +
+                            `Класс авто: ${className}\n` +
+                            `Выбранные услуги:\n- ${servicesListText.join('\n- ')}\n\n` +
+                            `Итоговая стоимость: ${totalPriceText}\n\n` +
+                            `Имя: ${name}\n` +
+                            `Телефон: ${phone}`;
+
+            let tgUrl = `https://t.me/birfort?text=${encodeURIComponent(orderText)}`;
+            window.open(tgUrl, '_blank');
+        }
+
+        let modalServiceTitle = '';
+
+        function openModal(serviceTitle) {
+            modalServiceTitle = serviceTitle;
+            document.getElementById('modalTitle').innerText = serviceTitle;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        function closeModalOutside(event) {
+            if (event.target === document.getElementById('modalOverlay')) {
+                closeModal();
+            }
+        }
+
+        function submitModal(event) {
+            event.preventDefault();
+            let name = document.getElementById('modalName').value;
+            let phone = document.getElementById('modalPhone').value;
+
+            let orderText = `Заявка с сайта APEX DETAIL:\n\n` +
+                            `Интересующая услуга / цель: ${modalServiceTitle}\n\n` +
+                            `Имя: ${name}\n` +
+                            `Телефон: ${phone}`;
+
+            let tgUrl = `https://t.me/birfort?text=${encodeURIComponent(orderText)}`;
+            window.open(tgUrl, '_blank');
+            closeModal();
+        }
+
+        // Initialize calculation on load
+        calculateTotal();
+    </script>
+</body>
+</html>
